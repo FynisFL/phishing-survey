@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 Khảo sát Phishing trong TMĐT 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .bg-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            animation: float 25s infinite;
+            bottom: -150px;
+            border-radius: 50%;
+        }
+        
+        .bg-animation span:nth-child(1) { left: 10%; width: 80px; height: 80px; animation-delay: 0s; }
+        .bg-animation span:nth-child(2) { left: 20%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+        .bg-animation span:nth-child(3) { left: 35%; width: 60px; height: 60px; animation-delay: 4s; }
+        .bg-animation span:nth-child(4) { left: 50%; width: 40px; height: 40px; animation-delay: 0s; animation-duration: 18s; }
+        .bg-animation span:nth-child(5) { left: 65%; width: 90px; height: 90px; animation-delay: 0s; }
+        .bg-animation span:nth-child(6) { left: 75%; width: 30px; height: 30px; animation-delay: 3s; }
+        .bg-animation span:nth-child(7) { left: 85%; width: 70px; height: 70px; animation-delay: 7s; }
+        .bg-animation span:nth-child(8) { left: 90%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-1500px) rotate(720deg); opacity: 0; }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 700px;
+        }
+        
+        .form-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .header-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .header h1 {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 13px;
+            font-weight: 400;
+        }
+        
+        .progress-container {
+            padding: 20px 30px 0;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            text-align: right;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 11px;
+            margin-top: 5px;
+        }
+        
+        .form-body {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #f093fb;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title .icon {
+            font-size: 18px;
+        }
+        
+        .question {
+            margin-bottom: 24px;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .question-text {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        
+        .question-text .number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(240, 147, 251, 0.2);
+            color: #f093fb;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-left: 8px;
+            text-transform: uppercase;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            background: rgba(102, 126, 234, 0.15);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateX(5px);
+        }
+        
+        .option input {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            accent-color: #667eea;
+            cursor: pointer;
+        }
+        
+        .option label {
+            cursor: pointer;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            flex: 1;
+        }
+        
+        .option.selected {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+        
+        .option.selected label {
+            color: white;
+        }
+        
+        .skip-note {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #ffc107;
+        }
+        
+        .submit-section {
+            padding: 0 30px 30px;
+            text-align: center;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .submit-btn:active::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 11px;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        /* Success modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            animation: modalIn 0.5s ease;
+        }
+        
+        @keyframes modalIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .modal-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .modal h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .modal p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 20px; }
+            .form-body { padding: 20px; }
+            .option { padding: 12px 14px; }
+        }
+        
+        /* Hidden sections */
+        .hidden-section {
+            display: none;
+        }
+        
+        .hidden-section.active {
+            display: block;
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .submit-btn.loading .spinner {
+            display: inline-block;
+        }
+        
+        .submit-btn.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+    
+    <div class="container">
+        <div class="form-card">
+            <div class="header">
+                <div class="header-icon">🎣</div>
+                <h1>Khảo sát Phishing trong TMĐT</h1>
+                <p>Nhận thức và trải nghiệm về lừa đảo qua mạng</p>
+                <p style="margin-top: 8px; font-size: 11px;">⏱️ 3-5 phút | 🔒 Ẩn danh | 📊 Nghiên cứu</p>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">Tiến trình: 0%</div>
+            </div>
+            
+            <form id="surveyForm" class="form-body">
+                <!-- PHẦN 1 -->
+                <div class="section" id="section1">
+                    <div class="section-title">
+                        <span class="icon">👤</span>
+                        Phần 1: Thông tin cơ bản
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-text">
+                            <span class="number">1</span>
+                            Bạn thường mua sắm online bao nhiêu lần một tháng?
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectRadio('q1', this)"><input type="radio" name="q1" value="1" id="q1_1"><label for="q1_1">Không bao giờ</label></div>
+                            <div class="option" onclick="selectRadio('q1', this)"><input type="radio" name="q1" value="2" id="q1_2"><label for="q1_2">1-2 lần</label></div>
+                            <div class="option" onclick="selectRadio('q1', this)"><input type="radio" name="q1" value="3" id="q1_3"><label for="q1_3">3-5 lần</label></div>
+                            <div class="option" onclick="selectRadio('q1', this)"><input type="radio" name="q1" value="4" id="q1_4"><label for="q1_4">6-10 lần</label></div>
+                            <div class="option" onclick="selectRadio('q1', this)"><input type="radio" name="q1" value="5" id="q1_5"><label for="q1_5">Hơn 10 lần</label></div>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-text">
+                            <span class="number">2</span>
+                            Bạn thường mua sắm ở đâu? <span class="badge">Chọn nhiều</span>
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q2" value="Shopee" id="q2_1"><label for="q2_1">🛒 Shopee</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q2" value="Lazada" id="q2_2"><label for="q2_2">🏪 Lazada</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q2" value="Tiki" id="q2_3"><label for="q2_3">📦 Tiki</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q2" value="TikTok Shop" id="q2_4"><label for="q2_4">🎵 TikTok Shop</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q2" value="Facebook" id="q2_5"><label for="q2_5">📘 Facebook/Meta</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q2" value="Website riêng" id="q2_6"><label for="q2_6">🌐 Website thương hiệu</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q2" value="Khác" id="q2_7"><label for="q2_7">📝 Khác</label></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PHẦN 2 -->
+                <div class="section" id="section2">
+                    <div class="section-title">
+                        <span class="icon">🧠</span>
+                        Phần 2: Nhận thức về Phishing
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-text">
+                            <span class="number">3</span>
+                            Bạn đã bao giờ nghe đến khái niệm "Phishing" (lừa đảo qua mạng) chưa?
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectRadio('q3', this); checkSkipLogic()"><input type="radio" name="q3" value="1" id="q3_1"><label for="q3_1">❌ Chưa nghe bao giờ</label></div>
+                            <div class="option" onclick="selectRadio('q3', this); checkSkipLogic()"><input type="radio" name="q3" value="2" id="q3_2"><label for="q3_2">🤔 Nghe qua nhưng không hiểu rõ</label></div>
+                            <div class="option" onclick="selectRadio('q3', this); checkSkipLogic()"><input type="radio" name="q3" value="3" id="q3_3"><label for="q3_3">✅ Hiểu là "lừa đảo qua mạng"</label></div>
+                            <div class="option" onclick="selectRadio('q3', this); checkSkipLogic()"><input type="radio" name="q3" value="4" id="q3_4"><label for="q3_4">🎯 Hiểu rõ và biết cách nhận biết</label></div>
+                        </div>
+                        <div class="skip-note" id="skipNote" style="display:none;">
+                            💡 Bạn sẽ được chuyển đến câu hỏi phù hợp hơn ở phần cuối
+                        </div>
+                    </div>
+                    
+                    <div class="question" id="q4_question">
+                        <div class="question-text">
+                            <span class="number">4</span>
+                            Bạn có thể nhận biết email/tin nhắn Phishing qua dấu hiệu nào? <span class="badge">Chọn nhiều</span>
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q4" value="Lỗi chính tả" id="q4_1"><label for="q4_1">✏️ Có lỗi chính tả, ngôn ngữ kỳ lạ</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q4" value="Yêu cầu thông tin" id="q4_2"><label for="q4_2">🔑 Yêu cầu thông tin cá nhân qua link</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q4" value="URL lạ" id="q4_3"><label for="q4_3">🔗 URL/domain lạ, không phải trang chính thức</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q4" value="Khẩn cấp" id="q4_4"><label for="q4_4">⏰ Tạo cảm giác khẩn cấp ("tài khoản sắp bị khóa")</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q4" value="Không nhận biết" id="q4_5"><label for="q4_5">❓ Không thể nhận biết</label></div>
+                        </div>
+                    </div>
+                    
+                    <div class="question" id="q5_question">
+                        <div class="question-text">
+                            <span class="number">5</span>
+                            Bạn đã bao giờ nhận được email/tin nhắn nghi ngờ là Phishing chưa?
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectRadio('q5', this)"><input type="radio" name="q5" value="1" id="q5_1"><label for="q5_1">Chưa bao giờ</label></div>
+                            <div class="option" onclick="selectRadio('q5', this)"><input type="radio" name="q5" value="2" id="q5_2"><label for="q5_2">1-2 lần</label></div>
+                            <div class="option" onclick="selectRadio('q5', this)"><input type="radio" name="q5" value="3" id="q5_3"><label for="q5_3">3-5 lần</label></div>
+                            <div class="option" onclick="selectRadio('q5', this)"><input type="radio" name="q5" value="4" id="q5_4"><label for="q5_4">Nhiều lần (hơn 5)</label></div>
+                        </div>
+                    </div>
+                    
+                    <div class="question" id="q6_question">
+                        <div class="question-text">
+                            <span class="number">6</span>
+                            Bạn đã bao giờ vô tình click vào link Phishing chưa?
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectRadio('q6', this)"><input type="radio" name="q6" value="1" id="q6_1"><label for="q6_1">Chưa bao giờ</label></div>
+                            <div class="option" onclick="selectRadio('q6', this)"><input type="radio" name="q6" value="2" id="q6_2"><label for="q6_2">Có, nhưng nhận ra ngay</label></div>
+                            <div class="option" onclick="selectRadio('q6', this)"><input type="radio" name="q6" value="3" id="q6_3"><label for="q6_3">Có, và đã nhập thông tin</label></div>
+                            <div class="option" onclick="selectRadio('q6', this)"><input type="radio" name="q6" value="4" id="q6_4"><label for="q6_4">Không chắc / Không nhớ</label></div>
+                        </div>
+                    </div>
+                    
+                    <div class="question" id="q7_question">
+                        <div class="question-text">
+                            <span class="number">7</span>
+                            Nếu đã từng dính Phishing, hậu quả là gì?
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="1" id="q7_1"><label for="q7_1">Không có hậu quả</label></div>
+                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="2" id="q7_2"><label for="q7_2">💸 Mất tiền</label></div>
+                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="3" id="q7_3"><label for="q7_3">📋 Thông tin cá nhân bị lộ</label></div>
+                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="4" id="q7_4"><label for="q7_4">👤 Tài khoản bị chiếm</label></div>
+                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="5" id="q7_5"><label for="q7_5">📦 Mua hàng không nhận được</label></div>
+                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="6" id="q7_6"><label for="q7_6">📝 Khác</label></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PHẦN 3: Skip Logic -->
+                <div class="section hidden-section" id="section3">
+                    <div class="section-title">
+                        <span class="icon">🔄</span>
+                        Phần 3: Trải nghiệm online
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-text">
+                            <span class="number">6'</span>
+                            Bạn ĐÃ TỪNG trải nghiệm nào trong những việc dưới đây chưa? <span class="badge">Chọn nhiều</span>
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q6p" value="Click link lạ" id="q6p_1"><label for="q6p_1">🔗 Click link lạ, sau đó thất trang yêu cầu nhập mật khẩu</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q6p" value="Email khẩn cấp" id="q6p_2"><label for="q6p_2">📧 Nhận email yêu cầu xác nhận tài khoản khẩn cấp</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q6p" value="Mua hàng không nhận" id="q6p_3"><label for="q6p_3">🛍️ Mua hàng online không nhận được hàng</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q6p" value="Tài khoản bị đăng nhập" id="q6p_4"><label for="q6p_4">👤 Tài khoản bị đăng nhập lạ</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q6p" value="Tin nhắn giả" id="q6p_5"><label for="q6p_5">💬 Thấy tin nhắn giả mạo ngân hàng/ví điện tử</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q6p" value="Chưa trải nghiệm" id="q6p_6"><label for="q6p_6">✅ Chưa từng trải nghiệm việc gì</label></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="submit-section">
+                <button type="button" class="submit-btn" id="submitBtn" onclick="submitForm()">
+                    <span class="spinner"></span>
+                    <span class="btn-text">📤 Gửi khảo sát</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            📊 Dữ liệu dùng cho nghiên cứu "Phishing trong TMĐT" | 
+            <a href="#" onclick="exportCSV()">📥 Xuất CSV</a>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-icon">🎉</div>
+            <h2>Cảm ơn bạn!</h2>
+            <p>Khảo sát đã được ghi nhận thành công.<br>Dữ liệu sẽ được sử dụng cho nghiên cứu.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Google Apps Script Web App URL - THAY BẰNG URL CỦA BẠN
+        const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+        
+        // Select radio
+        function selectRadio(name, element) {
+            document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                r.closest('.option').classList.remove('selected');
+            });
+            element.classList.add('selected');
+            element.querySelector('input').checked = true;
+            updateProgress();
+        }
+        
+        // Select checkbox
+        function selectCheckbox(element) {
+            const checkbox = element.querySelector('input');
+            checkbox.checked = !checkbox.checked;
+            element.classList.toggle('selected', checkbox.checked);
+            updateProgress();
+        }
+        
+        // Skip logic
+        function checkSkipLogic() {
+            const q3Value = document.querySelector('input[name="q3"]:checked')?.value;
+            const skipNote = document.getElementById('skipNote');
+            const section2 = document.getElementById('section2');
+            const section3 = document.getElementById('section3');
+            
+            if (q3Value === '1') {
+                skipNote.style.display = 'block';
+                document.getElementById('q4_question').style.display = 'none';
+                document.getElementById('q5_question').style.display = 'none';
+                document.getElementById('q6_question').style.display = 'none';
+                document.getElementById('q7_question').style.display = 'none';
+                section3.classList.add('active');
+            } else {
+                skipNote.style.display = 'none';
+                document.getElementById('q4_question').style.display = 'block';
+                document.getElementById('q5_question').style.display = 'block';
+                document.getElementById('q6_question').style.display = 'block';
+                document.getElementById('q7_question').style.display = 'block';
+                section3.classList.remove('active');
+            }
+        }
+        
+        // Update progress
+        function updateProgress() {
+            const total = 7;
+            let answered = 0;
+            
+            if (document.querySelector('input[name="q1"]:checked')) answered++;
+            if (document.querySelector('input[name="q2"]:checked')) answered++;
+            if (document.querySelector('input[name="q3"]:checked')) answered++;
+            
+            const q3Value = document.querySelector('input[name="q3"]:checked')?.value;
+            if (q3Value === '1') {
+                if (document.querySelector('input[name="q6p"]:checked')) answered++;
+            } else {
+                if (document.querySelector('input[name="q4"]:checked')) answered++;
+                if (document.querySelector('input[name="q5"]:checked')) answered++;
+                if (document.querySelector('input[name="q6"]:checked')) answered++;
+                if (document.querySelector('input[name="q7"]:checked')) answered++;
+            }
+            
+            const percent = Math.round((answered / total) * 100);
+            document.getElementById('progressFill').style.width = percent + '%';
+            document.getElementById('progressText').textContent = `Tiến trình: ${percent}%`;
+        }
+        
+        // Submit form
+        function submitForm() {
+            const btn = document.getElementById('submitBtn');
+            const btnText = btn.querySelector('.btn-text');
+            
+            // Validate
+            if (!document.querySelector('input[name="q1"]:checked')) {
+                alert('⚠️ Vui lòng trả lời câu 1');
+                return;
+            }
+            
+            btn.classList.add('loading');
+            btnText.textContent = 'Đang gửi...';
+            
+            // Collect data
+            const formData = new FormData(document.getElementById('surveyForm'));
+            const data = {};
+            
+            // Convert to object
+            for (let [key, value] of formData.entries()) {
+                if (data[key]) {
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Add timestamp
+            data['timestamp'] = new Date().toLocaleString('vi-VN');
+            
+            // Send to Google Sheets
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                btn.classList.remove('loading');
+                btnText.textContent = '📤 Gửi khảo sát';
+                document.getElementById('successModal').classList.add('active');
+                
+                // Reset after 3 seconds
+                setTimeout(() => {
+                    document.getElementById('successModal').classList.remove('active');
+                    document.getElementById('surveyForm').reset();
+                    document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                    updateProgress();
+                }, 3000);
+            })
+            .catch(err => {
+                btn.classList.remove('loading');
+                btnText.textContent = '📤 Gửi khảo sát';
+                alert('❌ Lỗi gửi! Vui lòng thử lại.');
+                console.error(err);
+            });
+        }
+        
+        // Export CSV (local)
+        function exportCSV() {
+            alert('📊 Để xuất CSV từ Google Sheets:\n\n1. Mở Google Sheets đã kết nối\n2. File → Download → Comma-separated values (.csv)\n3. Mở file CSV bằng SPSS');
+        }
+        
+        // Initialize
+        updateProgress();
+    </script>
+</body>
+</html>
