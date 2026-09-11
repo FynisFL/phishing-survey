@@ -686,10 +686,43 @@
             const btn = document.getElementById('submitBtn');
             const btnText = btn.querySelector('.btn-text');
             
-            // Validate
+            // Validate tất cả câu hỏi
             if (!document.querySelector('input[name="q1"]:checked')) {
                 alert('⚠️ Vui lòng trả lời câu 1');
                 return;
+            }
+            if (!document.querySelector('input[name="q2"]:checked')) {
+                alert('⚠️ Vui lòng trả lời câu 2');
+                return;
+            }
+            if (!document.querySelector('input[name="q3"]:checked')) {
+                alert('⚠️ Vui lòng trả lời câu 3');
+                return;
+            }
+            
+            const q3Value = document.querySelector('input[name="q3"]:checked')?.value;
+            if (q3Value === '1') {
+                if (!document.querySelector('input[name="q6p"]:checked')) {
+                    alert('⚠️ Vui lòng trả lời câu 6\'');
+                    return;
+                }
+            } else {
+                if (!document.querySelector('input[name="q4"]:checked')) {
+                    alert('⚠️ Vui lòng trả lời câu 4');
+                    return;
+                }
+                if (!document.querySelector('input[name="q5"]:checked')) {
+                    alert('⚠️ Vui lòng trả lời câu 5');
+                    return;
+                }
+                if (!document.querySelector('input[name="q6"]:checked')) {
+                    alert('⚠️ Vui lòng trả lời câu 6');
+                    return;
+                }
+                if (!document.querySelector('input[name="q7"]:checked')) {
+                    alert('⚠️ Vui lòng trả lời câu 7');
+                    return;
+                }
             }
             
             btn.classList.add('loading');
