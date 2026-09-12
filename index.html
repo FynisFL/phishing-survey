@@ -586,6 +586,23 @@
                         </div>
                     </div>
                 </div>
+                <!-- PHẦN 4: Câu hỏi tự luận (Optional) -->
+                <div class="section" id="section4">
+                    <div class="section-title">
+                        <span class="icon">💬</span>
+                        Phần 4: Chia sẻ kinh nghiệm (Không bắt buộc)
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-text">
+                            <span class="number">8</span>
+                            Nếu bạn đã từng dính Phishing hoặc có kiến thức về cách phòng tránh, hãy chia sẻ lại để giúp đỡ những người đang và sẽ bị phishing. <span class="badge">Tự luận</span>
+                        </div>
+                        <div class="options">
+                            <textarea name="q8" id="q8" rows="4" placeholder="Ví dụ: Tôi đã từng bị lừa qua email giả Shopeu, sau đó tôi luôn kiểm tra URL trước khi nhập mật khẩu..." style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: white; font-size: 13px; font-family: 'Inter', sans-serif; resize: vertical;"></textarea>
+                        </div>
+                    </div>
+                </div>
             </form>
             
             <div class="submit-section">
@@ -598,7 +615,7 @@
         
         <div class="footer">
             📊 Dữ liệu dùng cho nghiên cứu "Phishing trong TMĐT" | 
-            <a href="#" onclick="exportCSV()">📥 Xuất CSV</a>
+            <a href="https://www.linkbout.com/fynis" target="_blank" style="color: #f093fb; text-decoration: none; font-weight: 600;">📌 Liên hệ: FynisFL (Ng.Trg.Duy)</a>
         </div>
     </div>
     
@@ -640,7 +657,7 @@
             const section2 = document.getElementById('section2');
             const section3 = document.getElementById('section3');
             
-            if (q3Value === '1') {
+            if (q3Value === '1' || q3Value === '2') {
                 skipNote.style.display = 'block';
                 document.getElementById('q4_question').style.display = 'none';
                 document.getElementById('q5_question').style.display = 'none';
@@ -667,7 +684,7 @@
             if (document.querySelector('input[name="q3"]:checked')) answered++;
             
             const q3Value = document.querySelector('input[name="q3"]:checked')?.value;
-            if (q3Value === '1') {
+            if (q3Value === '1' || q3Value === '2') {
                 if (document.querySelector('input[name="q6p"]:checked')) answered++;
             } else {
                 if (document.querySelector('input[name="q4"]:checked')) answered++;
@@ -701,7 +718,7 @@
             }
             
             const q3Value = document.querySelector('input[name="q3"]:checked')?.value;
-            if (q3Value === '1') {
+            if (q3Value === '1' || q3Value === '2') {
                 if (!document.querySelector('input[name="q6p"]:checked')) {
                     alert('⚠️ Vui lòng trả lời câu 6\'');
                     return;
