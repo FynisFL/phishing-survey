@@ -7,11 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -25,13 +21,10 @@
             overflow-x: hidden;
         }
         
-        /* Animated background */
         .bg-animation {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             overflow: hidden;
             z-index: 0;
@@ -40,8 +33,7 @@
         .bg-animation span {
             position: absolute;
             display: block;
-            width: 20px;
-            height: 20px;
+            width: 20px; height: 20px;
             background: rgba(255, 255, 255, 0.05);
             animation: float 25s infinite;
             bottom: -150px;
@@ -89,9 +81,7 @@
         .header::after {
             content: '';
             position: absolute;
-            bottom: -20px;
-            left: 0;
-            right: 0;
+            bottom: -20px; left: 0; right: 0;
             height: 40px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 50% 50% 0 0;
@@ -122,9 +112,7 @@
             font-weight: 400;
         }
         
-        .progress-container {
-            padding: 20px 30px 0;
-        }
+        .progress-container { padding: 20px 30px 0; }
         
         .progress-bar {
             height: 6px;
@@ -148,13 +136,9 @@
             margin-top: 5px;
         }
         
-        .form-body {
-            padding: 30px;
-        }
+        .form-body { padding: 30px; }
         
-        .section {
-            margin-bottom: 30px;
-        }
+        .section { margin-bottom: 30px; }
         
         .section-title {
             display: flex;
@@ -170,9 +154,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .section-title .icon {
-            font-size: 18px;
-        }
+        .section-title .icon { font-size: 18px; }
         
         .question {
             margin-bottom: 24px;
@@ -198,8 +180,7 @@
             justify-content: center;
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            width: 26px;
-            height: 26px;
+            width: 26px; height: 26px;
             border-radius: 8px;
             font-size: 12px;
             font-weight: 700;
@@ -243,8 +224,7 @@
         
         .option input {
             margin-right: 12px;
-            width: 18px;
-            height: 18px;
+            width: 18px; height: 18px;
             accent-color: #667eea;
             cursor: pointer;
         }
@@ -261,9 +241,7 @@
             border-color: #667eea;
         }
         
-        .option.selected label {
-            color: white;
-        }
+        .option.selected label { color: white; }
         
         .skip-note {
             background: rgba(255, 193, 7, 0.1);
@@ -300,27 +278,20 @@
             box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
         }
         
-        .submit-btn:active {
-            transform: translateY(-1px);
-        }
+        .submit-btn:active { transform: translateY(-1px); }
         
         .submit-btn::after {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
+            top: 50%; left: 50%;
+            width: 0; height: 0;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
         }
         
-        .submit-btn:active::after {
-            width: 300px;
-            height: 300px;
-        }
+        .submit-btn:active::after { width: 300px; height: 300px; }
         
         .footer {
             text-align: center;
@@ -331,27 +302,23 @@
         }
         
         .footer a {
-            color: #667eea;
+            color: #f093fb;
             text-decoration: none;
+            font-weight: 600;
         }
         
-        /* Success modal */
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.8);
             z-index: 1000;
             align-items: center;
             justify-content: center;
         }
         
-        .modal-overlay.active {
-            display: flex;
-        }
+        .modal-overlay.active { display: flex; }
         
         .modal {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
@@ -367,42 +334,22 @@
             to { transform: scale(1); opacity: 1; }
         }
         
-        .modal-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-        }
+        .modal-icon { font-size: 60px; margin-bottom: 20px; }
+        .modal h2 { color: white; margin-bottom: 10px; }
+        .modal p { color: rgba(255, 255, 255, 0.8); font-size: 14px; }
         
-        .modal h2 {
-            color: white;
-            margin-bottom: 10px;
-        }
-        
-        .modal p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 14px;
-        }
-        
-        /* Responsive */
         @media (max-width: 600px) {
             .header h1 { font-size: 20px; }
             .form-body { padding: 20px; }
             .option { padding: 12px 14px; }
         }
         
-        /* Hidden sections */
-        .hidden-section {
-            display: none;
-        }
+        .hidden-section { display: none; }
+        .hidden-section.active { display: block; }
         
-        .hidden-section.active {
-            display: block;
-        }
-        
-        /* Loading spinner */
         .spinner {
             display: none;
-            width: 20px;
-            height: 20px;
+            width: 20px; height: 20px;
             border: 2px solid rgba(255,255,255,0.3);
             border-top-color: white;
             border-radius: 50%;
@@ -410,18 +357,10 @@
             margin-right: 10px;
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
         
-        .submit-btn.loading .spinner {
-            display: inline-block;
-        }
-        
-        .submit-btn.loading {
-            pointer-events: none;
-            opacity: 0.8;
-        }
+        .submit-btn.loading .spinner { display: inline-block; }
+        .submit-btn.loading { pointer-events: none; opacity: 0.8; }
     </style>
 </head>
 <body>
@@ -447,13 +386,14 @@
             </div>
             
             <form id="surveyForm" class="form-body">
-                <!-- PHẦN 1 -->
+                <!-- ========== PHẦN 1: THÔNG TIN CƠ BẢN ========== -->
                 <div class="section" id="section1">
                     <div class="section-title">
                         <span class="icon">👤</span>
                         Phần 1: Thông tin cơ bản
                     </div>
                     
+                    <!-- Q1 -->
                     <div class="question">
                         <div class="question-text">
                             <span class="number">1</span>
@@ -468,6 +408,7 @@
                         </div>
                     </div>
                     
+                    <!-- Q2 -->
                     <div class="question">
                         <div class="question-text">
                             <span class="number">2</span>
@@ -485,13 +426,14 @@
                     </div>
                 </div>
                 
-                <!-- PHẦN 2 -->
+                <!-- ========== PHẦN 2: NHẬN THỨC ========== -->
                 <div class="section" id="section2">
                     <div class="section-title">
                         <span class="icon">🧠</span>
                         Phần 2: Nhận thức về Phishing
                     </div>
                     
+                    <!-- Q3 -->
                     <div class="question">
                         <div class="question-text">
                             <span class="number">3</span>
@@ -508,6 +450,51 @@
                         </div>
                     </div>
                     
+                    <!-- Q3a, Q3b, Q3c: Chỉ hiện khi Q3 = 1 hoặc 2 -->
+                    <div class="question hidden-section" id="q3a_question">
+                        <div class="question-text">
+                            <span class="number">3a</span>
+                            Khi mua hàng online, bạn thường chú ý nhất điều gì? <span class="badge">Chọn nhiều</span>
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q3a" value="Giá khuyến mãi" id="q3a_1"><label for="q3a_1">💰 Giá cả khuyến mãi</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q3a" value="Đánh giá từ người khác" id="q3a_2"><label for="q3a_2">⭐ Đánh giá từ người khác</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q3a" value="Thương hiệu quen thuộc" id="q3a_3"><label for="q3a_3">🏷️ Thương hiệu quen thuộc</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q3a" value="Chính sách đổi trả" id="q3a_4"><label for="q3a_4">📦 Chính sách đổi trả</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q3a" value="Trải nghiệm mượt mà" id="q3a_5"><label for="q3a_5">📱 Trải nghiệm app/web mượt mà</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q3a" value="Không để ý đặc biệt" id="q3a_6"><label for="q3a_6">❓ Không để ý đặc biệt</label></div>
+                        </div>
+                    </div>
+                    
+                    <div class="question hidden-section" id="q3b_question">
+                        <div class="question-text">
+                            <span class="number">3b</span>
+                            Bạn có nghĩ mình sẽ nhận ra nếu một website mua sắm là giả không?
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectRadio('q3b', this)"><input type="radio" name="q3b" value="1" id="q3b_1"><label for="q3b_1">✅ Chắc chắn nhận ra</label></div>
+                            <div class="option" onclick="selectRadio('q3b', this)"><input type="radio" name="q3b" value="2" id="q3b_2"><label for="q3b_2">🤔 Có lẽ nhận ra</label></div>
+                            <div class="option" onclick="selectRadio('q3b', this)"><input type="radio" name="q3b" value="3" id="q3b_3"><label for="q3b_3">❓ Không biết</label></div>
+                            <div class="option" onclick="selectRadio('q3b', this)"><input type="radio" name="q3b" value="4" id="q3b_4"><label for="q3b_4">😰 Mình không giỏi công nghệ</label></div>
+                        </div>
+                    </div>
+                    
+                    <div class="question hidden-section" id="q3c_question">
+                        <div class="question-text">
+                            <span class="number">3c</span>
+                            Nếu bạn muốn tìm hiểu về bảo mật mua sắm online, bạn sẽ làm gì?
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectRadio('q3c', this)"><input type="radio" name="q3c" value="1" id="q3c_1"><label for="q3c_1">🔍 Google tìm kiếm</label></div>
+                            <div class="option" onclick="selectRadio('q3c', this)"><input type="radio" name="q3c" value="2" id="q3c_2"><label for="q3c_2">📱 Hỏi bạn bè/người thân</label></div>
+                            <div class="option" onclick="selectRadio('q3c', this)"><input type="radio" name="q3c" value="3" id="q3c_3"><label for="q3c_3">📺 Xem YouTube/TikTok</label></div>
+                            <div class="option" onclick="selectRadio('q3c', this)"><input type="radio" name="q3c" value="4" id="q3c_4"><label for="q3c_4">📖 Đọc bài viết hướng dẫn</label></div>
+                            <div class="option" onclick="selectRadio('q3c', this)"><input type="radio" name="q3c" value="5" id="q3c_5"><label for="q3c_5">🤷 Không biết bắt đầu từ đâu</label></div>
+                            <div class="option" onclick="selectRadio('q3c', this)"><input type="radio" name="q3c" value="6" id="q3c_6"><label for="q3c_6">❌ Không cần tìm hiểu</label></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Q4 -->
                     <div class="question" id="q4_question">
                         <div class="question-text">
                             <span class="number">4</span>
@@ -515,69 +502,45 @@
                         </div>
                         <div class="options">
                             <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q4" value="Lỗi chính tả" id="q4_1"><label for="q4_1">✏️ Có lỗi chính tả, ngôn ngữ kỳ lạ</label></div>
-                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q4" value="Yêu cầu thông tin" id="q4_2"><label for="q4_2">🔑 Yêu cầu thông tin cá nhân</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q4" value="Yêu cầu thông tin" id="q4_2"><label for="q4_2">🔑 Yêu cầu thông tin cá nhân qua link</label></div>
                             <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q4" value="URL lạ" id="q4_3"><label for="q4_3">🔗 URL/domain lạ, không phải trang chính thức</label></div>
                             <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q4" value="Khẩn cấp" id="q4_4"><label for="q4_4">⏰ Tạo cảm giác khẩn cấp ("tài khoản sắp bị khóa")</label></div>
                             <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q4" value="Không nhận biết" id="q4_5"><label for="q4_5">❓ Không thể nhận biết</label></div>
                         </div>
                     </div>
                     
+                    <!-- Q5: Yếu tố tin tưởng -->
                     <div class="question" id="q5_question">
                         <div class="question-text">
                             <span class="number">5</span>
-                            Bạn đã bao giờ nhận được email/tin nhắn nghi ngờ là Phishing chưa?
+                            Yếu tố nào khiến bạn tin tưởng một website thương mại điện tử là an toàn? <span class="badge">Chọn nhiều</span>
                         </div>
                         <div class="options">
-                            <div class="option" onclick="selectRadio('q5', this)"><input type="radio" name="q5" value="1" id="q5_1"><label for="q5_1">Chưa bao giờ</label></div>
-                            <div class="option" onclick="selectRadio('q5', this)"><input type="radio" name="q5" value="2" id="q5_2"><label for="q5_2">1-2 lần</label></div>
-                            <div class="option" onclick="selectRadio('q5', this)"><input type="radio" name="q5" value="3" id="q5_3"><label for="q5_3">3-5 lần</label></div>
-                            <div class="option" onclick="selectRadio('q5', this)"><input type="radio" name="q5" value="4" id="q5_4"><label for="q5_4">Nhiều lần (hơn 5)</label></div>
-                        </div>
-                    </div>
-                    
-                    <div class="question" id="q6_question">
-                        <div class="question-text">
-                            <span class="number">6</span>
-                            Bạn đã bao giờ vô tình click vào link Phishing chưa?
-                        </div>
-                        <div class="options">
-                            <div class="option" onclick="selectRadio('q6', this)"><input type="radio" name="q6" value="1" id="q6_1"><label for="q6_1">Chưa bao giờ</label></div>
-                            <div class="option" onclick="selectRadio('q6', this)"><input type="radio" name="q6" value="2" id="q6_2"><label for="q6_2">Có, nhưng nhận ra ngay</label></div>
-                            <div class="option" onclick="selectRadio('q6', this)"><input type="radio" name="q6" value="3" id="q6_3"><label for="q6_3">Có, và đã nhập thông tin</label></div>
-                            <div class="option" onclick="selectRadio('q6', this)"><input type="radio" name="q6" value="4" id="q6_4"><label for="q6_4">Không chắc / Không nhớ</label></div>
-                        </div>
-                    </div>
-                    
-                    <div class="question" id="q7_question">
-                        <div class="question-text">
-                            <span class="number">7</span>
-                            Nếu đã từng dính Phishing, hậu quả là gì?
-                        </div>
-                        <div class="options">
-                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="1" id="q7_1"><label for="q7_1">Không có hậu quả</label></div>
-                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="2" id="q7_2"><label for="q7_2">💸 Mất tiền</label></div>
-                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="3" id="q7_3"><label for="q7_3">📋 Thông tin cá nhân bị lộ</label></div>
-                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="4" id="q7_4"><label for="q7_4">👤 Tài khoản bị chiếm</label></div>
-                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="5" id="q7_5"><label for="q7_5">📦 Mua hàng không nhận được</label></div>
-                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="6" id="q7_6"><label for="q7_6">📝 Khác</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q5" value="HTTPS/khóa xanh" id="q5_1"><label for="q5_1">🔒 Có HTTPS / biểu tượng khóa xanh trên trình duyệt</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q5" value="Đánh giá từ người mua" id="q5_2"><label for="q5_2">⭐ Có đánh giá/nhận xét từ người mua trước</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q5" value="OTP khi thanh toán" id="q5_3"><label for="q5_3">🔐 Có xác thực 2 lớp (OTP) khi thanh toán</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q5" value="Thương hiệu quen thuộc" id="q5_4"><label for="q5_4">🏷️ Thương hiệu quen thuộc, đã nghe tên trước đó</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q5" value="Chính sách đổi trả" id="q5_5"><label for="q5_5">📜 Có chính sách đổi trả/hoàn tiền rõ ràng</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q5" value="Khác" id="q5_6"><label for="q5_6">📝 Khác</label></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- PHẦN 3: Skip Logic -->
-                <div class="section hidden-section" id="section3">
+                <!-- ========== PHẦN 3: TRẢI NGHIỆM THỰC TẾ ========== -->
+                <div class="section" id="section3">
                     <div class="section-title">
-                        <span class="icon">🔄</span>
-                        Phần 3: Trải nghiệm online
+                        <span class="icon">📊</span>
+                        Phần 3: Trải nghiệm thực tế
                     </div>
                     
-                    <div class="question">
+                    <!-- Q6' (cho nhóm không biết) -->
+                    <div class="question hidden-section" id="q6p_question">
                         <div class="question-text">
                             <span class="number">6'</span>
                             Bạn ĐÃ TỪNG trải nghiệm nào trong những việc dưới đây chưa? <span class="badge">Chọn nhiều</span>
                         </div>
                         <div class="options">
-                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q6p" value="Click link lạ" id="q6p_1"><label for="q6p_1">🔗 Click link lạ, sau đó thấy trang yêu cầu nhập mật khẩu</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q6p" value="Click link lạ" id="q6p_1"><label for="q6p_1">🔗 Click link lạ, sau đó thất trang yêu cầu nhập mật khẩu</label></div>
                             <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q6p" value="Email khẩn cấp" id="q6p_2"><label for="q6p_2">📧 Nhận email yêu cầu xác nhận tài khoản khẩn cấp</label></div>
                             <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q6p" value="Mua hàng không nhận" id="q6p_3"><label for="q6p_3">🛍️ Mua hàng online không nhận được hàng</label></div>
                             <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q6p" value="Tài khoản bị đăng nhập" id="q6p_4"><label for="q6p_4">👤 Tài khoản bị đăng nhập lạ</label></div>
@@ -585,21 +548,82 @@
                             <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q6p" value="Chưa trải nghiệm" id="q6p_6"><label for="q6p_6">✅ Chưa từng trải nghiệm việc gì</label></div>
                         </div>
                     </div>
+                    
+                    <!-- Q6 -->
+                    <div class="question" id="q6_question">
+                        <div class="question-text">
+                            <span class="number">6</span>
+                            Bạn đã bao giờ nhận được email/tin nhắn nghi ngờ là Phishing chưa?
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectRadio('q6', this)"><input type="radio" name="q6" value="1" id="q6_1"><label for="q6_1">Chưa bao giờ</label></div>
+                            <div class="option" onclick="selectRadio('q6', this)"><input type="radio" name="q6" value="2" id="q6_2"><label for="q6_2">1-2 lần</label></div>
+                            <div class="option" onclick="selectRadio('q6', this)"><input type="radio" name="q6" value="3" id="q6_3"><label for="q6_3">3-5 lần</label></div>
+                            <div class="option" onclick="selectRadio('q6', this)"><input type="radio" name="q6" value="4" id="q6_4"><label for="q6_4">Nhiều lần (hơn 5)</label></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Q7 -->
+                    <div class="question" id="q7_question">
+                        <div class="question-text">
+                            <span class="number">7</span>
+                            Bạn đã bao giờ vô tình click vào link Phishing chưa?
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="1" id="q7_1"><label for="q7_1">Chưa bao giờ</label></div>
+                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="2" id="q7_2"><label for="q7_2">Có, nhưng nhận ra ngay</label></div>
+                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="3" id="q7_3"><label for="q7_3">Có, và đã nhập thông tin</label></div>
+                            <div class="option" onclick="selectRadio('q7', this)"><input type="radio" name="q7" value="4" id="q7_4"><label for="q7_4">Không chắc / Không nhớ</label></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Q8 -->
+                    <div class="question" id="q8_question">
+                        <div class="question-text">
+                            <span class="number">8</span>
+                            Nếu đã từng dính Phishing, hậu quả là gì?
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectRadio('q8', this)"><input type="radio" name="q8" value="1" id="q8_1"><label for="q8_1">Không có hậu quả</label></div>
+                            <div class="option" onclick="selectRadio('q8', this)"><input type="radio" name="q8" value="2" id="q8_2"><label for="q8_2">💸 Mất tiền</label></div>
+                            <div class="option" onclick="selectRadio('q8', this)"><input type="radio" name="q8" value="3" id="q8_3"><label for="q8_3">📋 Thông tin cá nhân bị lộ</label></div>
+                            <div class="option" onclick="selectRadio('q8', this)"><input type="radio" name="q8" value="4" id="q8_4"><label for="q8_4">👤 Tài khoản bị chiếm</label></div>
+                            <div class="option" onclick="selectRadio('q8', this)"><input type="radio" name="q8" value="5" id="q8_5"><label for="q8_5">📦 Mua hàng không nhận được</label></div>
+                            <div class="option" onclick="selectRadio('q8', this)"><input type="radio" name="q8" value="6" id="q8_6"><label for="q8_6">📝 Khác</label></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Q9: Hành động ứng phó -->
+                    <div class="question" id="q9_question">
+                        <div class="question-text">
+                            <span class="number">9</span>
+                            Sau khi nghi ngờ hoặc gặp phải Phishing, bạn đã làm gì? <span class="badge">Chọn nhiều</span>
+                        </div>
+                        <div class="options">
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q9" value="Đổi mật khẩu" id="q9_1"><label for="q9_1">🔑 Đổi mật khẩu ngay lập tức</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q9" value="Báo cáo sàn TMĐT" id="q9_2"><label for="q9_2">📢 Báo cáo cho sàn TMĐT / ngân hàng / cơ quan chức năng</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q9" value="Chặn/xóa tin nhắn" id="q9_3"><label for="q9_3">🚫 Chỉ chặn/xóa tin nhắn rồi thôi, không làm gì thêm</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q9" value="Không biết làm gì" id="q9_4"><label for="q9_4">😶 Không biết phải làm gì</label></div>
+                            <div class="option" onclick="selectCheckbox(this)"><input type="checkbox" name="q9" value="Khác" id="q9_5"><label for="q9_5">📝 Khác</label></div>
+                        </div>
+                    </div>
                 </div>
-                <!-- PHẦN 4: Câu hỏi tự luận (Optional) -->
+                
+                <!-- ========== PHẦN 4: CHIA SẺ KINH NGHIỆM ========== -->
                 <div class="section" id="section4">
                     <div class="section-title">
                         <span class="icon">💬</span>
                         Phần 4: Chia sẻ kinh nghiệm (Không bắt buộc)
                     </div>
                     
+                    <!-- Q10 -->
                     <div class="question">
                         <div class="question-text">
-                            <span class="number">8</span>
-                            Nếu bạn đã từng dính Phishing hoặc có kiến thức về cách phòng tránh, hãy chia sẻ lại để giúp đỡ những người đang và sẽ bị phishing. <span class="badge">Tự luận</span>
+                            <span class="number">10</span>
+                            Nếu bạn đã từng dính Phishing hoặc có kiến thức về cách phòng tránh, hãy chia sẻ lại để giúp đỡ những người đang và sẽ bị Phishing. <span class="badge">Tự luận</span>
                         </div>
                         <div class="options">
-                            <textarea name="q8" id="q8" rows="4" placeholder="Ví dụ: Tôi đã từng bị lừa qua email giả Shopee, sau đó tôi luôn kiểm tra URL trước khi nhập mật khẩu..." style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: white; font-size: 13px; font-family: 'Inter', sans-serif; resize: vertical;"></textarea>
+                            <textarea name="q10" id="q10" rows="4" placeholder="Ví dụ: Tôi đã từng bị lừa qua email giả Shopee, sau đó tôi luôn kiểm tra URL trước khi nhập mật khẩu..." style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: white; font-size: 13px; font-family: 'Inter', sans-serif; resize: vertical;"></textarea>
                         </div>
                     </div>
                 </div>
@@ -615,7 +639,7 @@
         
         <div class="footer">
             📊 Dữ liệu dùng cho nghiên cứu "Phishing trong TMĐT" | 
-            <a href="https://www.linkbout.com/fynis" target="_blank" style="color: #f093fb; text-decoration: none; font-weight: 600;">📌 Liên hệ: FynisFL (Ng.Trg.Duy)</a>
+            <a href="https://www.linkbout.com/fynis" target="_blank">Liên hệ: FynisFL (Ng.Trg.Duy)</a>
         </div>
     </div>
     
@@ -629,10 +653,8 @@
     </div>
     
     <script>
-        // Google Apps Script Web App URL - THAY BẰNG URL CỦA BẠN
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyleZ17OCNHphdhTv3iERIW4ReCxsX5MObI_SblsRXaXjl1Sj12tii88BRYisUhwEB6Ng/exec';
         
-        // Select radio
         function selectRadio(name, element) {
             document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
                 r.closest('.option').classList.remove('selected');
@@ -642,7 +664,6 @@
             updateProgress();
         }
         
-        // Select checkbox
         function selectCheckbox(element) {
             const checkbox = element.querySelector('input');
             checkbox.checked = !checkbox.checked;
@@ -650,47 +671,69 @@
             updateProgress();
         }
         
-        // Skip logic
         function checkSkipLogic() {
             const q3Value = document.querySelector('input[name="q3"]:checked')?.value;
             const skipNote = document.getElementById('skipNote');
-            const section2 = document.getElementById('section2');
-            const section3 = document.getElementById('section3');
             
             if (q3Value === '1' || q3Value === '2') {
                 skipNote.style.display = 'block';
+                // Hide Q4, Q5 (nhóm biết)
                 document.getElementById('q4_question').style.display = 'none';
                 document.getElementById('q5_question').style.display = 'none';
+                // Hide Q6, Q7, Q8, Q9 (cho nhóm biết)
                 document.getElementById('q6_question').style.display = 'none';
                 document.getElementById('q7_question').style.display = 'none';
-                section3.classList.add('active');
+                document.getElementById('q8_question').style.display = 'none';
+                document.getElementById('q9_question').style.display = 'none';
+                // Show Q3a, Q3b, Q3c, Q6'
+                document.getElementById('q3a_question').classList.add('active');
+                document.getElementById('q3b_question').classList.add('active');
+                document.getElementById('q3c_question').classList.add('active');
+                document.getElementById('q6p_question').classList.add('active');
             } else {
                 skipNote.style.display = 'none';
+                // Show Q4, Q5 (nhóm biết)
                 document.getElementById('q4_question').style.display = 'block';
                 document.getElementById('q5_question').style.display = 'block';
+                // Show Q6, Q7, Q8, Q9
                 document.getElementById('q6_question').style.display = 'block';
                 document.getElementById('q7_question').style.display = 'block';
-                section3.classList.remove('active');
+                document.getElementById('q8_question').style.display = 'block';
+                document.getElementById('q9_question').style.display = 'block';
+                // Hide Q3a, Q3b, Q3c, Q6'
+                document.getElementById('q3a_question').classList.remove('active');
+                document.getElementById('q3b_question').classList.remove('active');
+                document.getElementById('q3c_question').classList.remove('active');
+                document.getElementById('q6p_question').classList.remove('active');
             }
         }
         
-        // Update progress
         function updateProgress() {
-            const total = 7;
-            let answered = 0;
+            const q3Value = document.querySelector('input[name="q3"]:checked')?.value;
+            let total = 0, answered = 0;
+            
+            if (q3Value === '1' || q3Value === '2') {
+                total = 6; // Q1, Q2, Q3, Q3a, Q3b, Q3c, Q6', Q10 (Q10 optional)
+            } else {
+                total = 9; // Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10 (Q10 optional)
+            }
             
             if (document.querySelector('input[name="q1"]:checked')) answered++;
             if (document.querySelector('input[name="q2"]:checked')) answered++;
             if (document.querySelector('input[name="q3"]:checked')) answered++;
             
-            const q3Value = document.querySelector('input[name="q3"]:checked')?.value;
             if (q3Value === '1' || q3Value === '2') {
+                if (document.querySelector('input[name="q3a"]:checked')) answered++;
+                if (document.querySelector('input[name="q3b"]:checked')) answered++;
+                if (document.querySelector('input[name="q3c"]:checked')) answered++;
                 if (document.querySelector('input[name="q6p"]:checked')) answered++;
             } else {
                 if (document.querySelector('input[name="q4"]:checked')) answered++;
                 if (document.querySelector('input[name="q5"]:checked')) answered++;
                 if (document.querySelector('input[name="q6"]:checked')) answered++;
                 if (document.querySelector('input[name="q7"]:checked')) answered++;
+                if (document.querySelector('input[name="q8"]:checked')) answered++;
+                if (document.querySelector('input[name="q9"]:checked')) answered++;
             }
             
             const percent = Math.round((answered / total) * 100);
@@ -698,74 +741,46 @@
             document.getElementById('progressText').textContent = `Tiến trình: ${percent}%`;
         }
         
-        // Submit form
         function submitForm() {
             const btn = document.getElementById('submitBtn');
             const btnText = btn.querySelector('.btn-text');
             
-            // Validate tất cả câu hỏi
-            if (!document.querySelector('input[name="q1"]:checked')) {
-                alert('⚠️ Vui lòng trả lời câu 1');
-                return;
-            }
-            if (!document.querySelector('input[name="q2"]:checked')) {
-                alert('⚠️ Vui lòng trả lời câu 2');
-                return;
-            }
-            if (!document.querySelector('input[name="q3"]:checked')) {
-                alert('⚠️ Vui lòng trả lời câu 3');
-                return;
-            }
+            // Validate
+            if (!document.querySelector('input[name="q1"]:checked')) { alert('⚠️ Vui lòng trả lời câu 1'); return; }
+            if (!document.querySelector('input[name="q2"]:checked')) { alert('⚠️ Vui lòng trả lời câu 2'); return; }
+            if (!document.querySelector('input[name="q3"]:checked')) { alert('⚠️ Vui lòng trả lời câu 3'); return; }
             
             const q3Value = document.querySelector('input[name="q3"]:checked')?.value;
+            
             if (q3Value === '1' || q3Value === '2') {
-                if (!document.querySelector('input[name="q6p"]:checked')) {
-                    alert('⚠️ Vui lòng trả lời câu 6\'');
-                    return;
-                }
+                if (!document.querySelector('input[name="q3a"]:checked')) { alert('⚠️ Vui lòng trả lời câu 3a'); return; }
+                if (!document.querySelector('input[name="q3b"]:checked')) { alert('⚠️ Vui lòng trả lời câu 3b'); return; }
+                if (!document.querySelector('input[name="q3c"]:checked')) { alert('⚠️ Vui lòng trả lời câu 3c'); return; }
+                if (!document.querySelector('input[name="q6p"]:checked')) { alert('⚠️ Vui lòng trả lời câu 6\''); return; }
             } else {
-                if (!document.querySelector('input[name="q4"]:checked')) {
-                    alert('⚠️ Vui lòng trả lời câu 4');
-                    return;
-                }
-                if (!document.querySelector('input[name="q5"]:checked')) {
-                    alert('⚠️ Vui lòng trả lời câu 5');
-                    return;
-                }
-                if (!document.querySelector('input[name="q6"]:checked')) {
-                    alert('⚠️ Vui lòng trả lời câu 6');
-                    return;
-                }
-                if (!document.querySelector('input[name="q7"]:checked')) {
-                    alert('⚠️ Vui lòng trả lời câu 7');
-                    return;
-                }
+                if (!document.querySelector('input[name="q4"]:checked')) { alert('⚠️ Vui lòng trả lời câu 4'); return; }
+                if (!document.querySelector('input[name="q5"]:checked')) { alert('⚠️ Vui lòng trả lời câu 5'); return; }
+                if (!document.querySelector('input[name="q6"]:checked')) { alert('⚠️ Vui lòng trả lời câu 6'); return; }
+                if (!document.querySelector('input[name="q7"]:checked')) { alert('⚠️ Vui lòng trả lời câu 7'); return; }
+                if (!document.querySelector('input[name="q8"]:checked')) { alert('⚠️ Vui lòng trả lời câu 8'); return; }
+                if (!document.querySelector('input[name="q9"]:checked')) { alert('⚠️ Vui lòng trả lời câu 9'); return; }
             }
             
             btn.classList.add('loading');
             btnText.textContent = 'Đang gửi...';
             
-            // Collect data
             const formData = new FormData(document.getElementById('surveyForm'));
             const data = {};
             
-            // Convert to object
             for (let [key, value] of formData.entries()) {
                 if (data[key]) {
-                    if (Array.isArray(data[key])) {
-                        data[key].push(value);
-                    } else {
-                        data[key] = [data[key], value];
-                    }
-                } else {
-                    data[key] = value;
-                }
+                    if (Array.isArray(data[key])) { data[key].push(value); }
+                    else { data[key] = [data[key], value]; }
+                } else { data[key] = value; }
             }
             
-            // Add timestamp
             data['timestamp'] = new Date().toLocaleString('vi-VN');
             
-            // Send to Google Sheets
             fetch(SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -776,8 +791,6 @@
                 btn.classList.remove('loading');
                 btnText.textContent = '📤 Gửi khảo sát';
                 document.getElementById('successModal').classList.add('active');
-                
-                // Reset after 3 seconds
                 setTimeout(() => {
                     document.getElementById('successModal').classList.remove('active');
                     document.getElementById('surveyForm').reset();
@@ -793,12 +806,6 @@
             });
         }
         
-        // Export CSV (local)
-        function exportCSV() {
-            alert('📊 Để xuất CSV từ Google Sheets:\n\n1. Mở Google Sheets đã kết nối\n2. File → Download → Comma-separated values (.csv)\n3. Mở file CSV bằng SPSS');
-        }
-        
-        // Initialize
         updateProgress();
     </script>
 </body>
